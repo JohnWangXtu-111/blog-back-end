@@ -5,6 +5,6 @@ const route = require('./routes/index.js');
 app.use(express.json());
 route(app);
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("The blog server is running at http://127.0.0.1:3000");
 });
