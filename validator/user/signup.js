@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
-const validate = require("../utils/validate.js");
-const UserModel = require("../model/user.js");
+const validate = require("../../utils/validate.js");
+const UserModel = require("../../model/user.js");
 module.exports = validate([
   body("username")
     .notEmpty()

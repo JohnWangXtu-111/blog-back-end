@@ -5,5 +5,5 @@ const sign = promisify(jwt.sign);
 const verify = promisify(jwt.verify);
 module.exports = {
   sign,
-  verify,
+  verify
 };

@@ -1,4 +1,4 @@
-const User = require("../model/user.js");
+const User = require("../../model/user.js");
 const sha1 = require("node-sha1");
 
 
