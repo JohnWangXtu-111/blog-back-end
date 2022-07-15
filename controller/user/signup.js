@@ -1,8 +1,7 @@
 const User = require("../../model/user.js");
 const sha1 = require("node-sha1");
 
-
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   let avatarPath = req.file?.path;
 
   try {
@@ -26,10 +25,10 @@ module.exports = async (req, res) => {
       message: "注册成功",
       code: 200,
       user: {
-        ...createUser
+        ...createUser,
       },
     });
   } catch (err) {
-    console.log("when create user", err);
+    next(err);
   }
-}
+};

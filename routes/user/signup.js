@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const upload = require("../../utils/upload.js");
-const signupCtrl = require('../../controller/user/index.js').profile;
+const signupCtrl = require('../../controller/user/index.js').signup;
 const signupValidator = require('../../validator/user/index.js').signup;
 
 

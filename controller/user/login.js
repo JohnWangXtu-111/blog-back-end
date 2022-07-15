@@ -3,9 +3,6 @@ const { secret } = require('../../config/config.js');
 
 module.exports = async function (req, res) {
   const user = req.user;
-  
-
-
   const token = await sign({
     username: user.username,
     password: user.password
@@ -15,7 +12,7 @@ module.exports = async function (req, res) {
   delete user.password;
   res.status(200).send({
     user,
-    message: '登录',
+    message: '登录成功',
     token
   })
 };

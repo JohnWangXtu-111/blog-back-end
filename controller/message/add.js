@@ -1,19 +1,17 @@
 const MessageModel = require("../../model/message.js");
-module.exports = async function (req, res) {
+module.exports = async function (req, res,next) {
   try {
     let message = {
       content: req.body.message.content,
-      username: req.user.username,
+      author: req.user.username,
     };
-    console.log("ddd", message);
 
-    await MessageModel.create(message);
+    const addMessage = await MessageModel.create(message);
     res.status(200).send({
       message: "留言成功",
+      message_info: addMessage
     });
   } catch (e) {
-    res.status(400).send({
-      message: "留言失败",
-    });
+    next(e)
   }
 };
