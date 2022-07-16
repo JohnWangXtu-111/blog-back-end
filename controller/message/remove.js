@@ -7,14 +7,13 @@ module.exports = async function (req, res, next) {
       req.body.message_id,
       assumedAuthor
     );
-    
     if (removeRes.deletedCount === 1) {
       res.status(200).send({
         message: "删除成功",
       }).end();
     } else {
       res.status(201).send({
-        message: "参数不正确",
+        message: "留言不存在",
       }).end();
     }
   } catch (err) {

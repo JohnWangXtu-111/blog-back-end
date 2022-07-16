@@ -9,4 +9,24 @@ module.exports = {
       author,
     });
   },
+  pagination: async function (start, end) {
+    const count = await Message.count({});
+    if (!end) {
+      const messageList = await Message.find({}, { comments: 0 }).skip(
+        start - 1
+      );
+      return Promise.resolve({
+        count,
+        messageList,
+      });
+    } else {
+      const messageList = await Message.find({}, { comments: 0 })
+        .skip(start - 1)
+        .limit(end - start + 1);
+      return Promise.resolve({
+        count,
+        messageList,
+      });
+    }
+  },
 };
