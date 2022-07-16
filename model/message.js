@@ -3,9 +3,9 @@ module.exports = {
   create: async function (message) {
     return await Message.create(message);
   },
-  deleteById: async function (message_id, author) {
+  deleteById: async function (_id, author) {
     return await Message.deleteOne({
-      _id: message_id,
+      _id,
       author,
     });
   },
@@ -29,4 +29,18 @@ module.exports = {
       });
     }
   },
+  updateContent: async function (_id, author, content) {
+    return await Message.findOneAndUpdate({
+      author,
+      _id,
+    }, {
+      content,
+      update_at: Date.now()
+    });
+  },
+  updateLikeCount: async function(author, _id, step) {
+    const prevCount = (await Message.findOne({_id}));
+    console.log('prevCount', prevCount);
+    return await Message.findOneAndUpdate({ author, _id}, {like_count: prevCount + step});
+  }
 };

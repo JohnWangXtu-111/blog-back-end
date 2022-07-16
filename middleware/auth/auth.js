@@ -12,12 +12,9 @@ module.exports = async function (req, res, next) {
       req.user = user;
       next();
     }
-  } catch (e) {
-    res
-      .status(304)
-      .send({
+  } catch (err) {
+    res.status(300).send({
         message: "Invalid token",
       })
-      .end();
   }
 };
